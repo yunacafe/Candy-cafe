@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop: MyString
+  place: MyString
+  purpose: MyString
+  atomosphere: MyString
+  detail: MyText
+
+two:
+  shop: MyString
+  place: MyString
+  purpose: MyString
+  atomosphere: MyString
+  detail: MyText

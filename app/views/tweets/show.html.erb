@@ -1,0 +1,64 @@
+<h1>(cafe)</h1>
+<h3>いいね一覧</h3>
+<div class="tweet">
+  <p><%= @tweet.shop %></p>
+  <p><%= @tweet.place %></p>
+  <p><%= @tweet.purpose %></p>
+  <p><%= @tweet.atomosphere %></p>
+  <p><%= @tweet.created_at %></p>
+ 
+<% if user_signed_in? %>
+     <% if current_user.already_liked?(@tweet) %>
+        <%= link_to tweet_like_path(id: @tweet.id, tweet_id: @tweet.id), data: { turbo_method: :delete } do %>
+            <i class="fas fa-heart style=color:red;"></i><%= @tweet.likes.count %>
+        <% end %>
+     <% else %>
+        <%= link_to tweet_likes_path(id: @tweet.id, tweet_id: @tweet.id), data: { turbo_method: :post }  do %>
+            <i class="far fa-heart style=color:red;"></i><%= @tweet.likes.count %>
+        <% end %>
+     <% end %>
+<% else %>
+     <i class="far fa-heart style="color:red;"></i><%= @tweet.likes.count %>
+<% end %>
+
+  <%= link_to "編集する", edit_tweet_path(@tweet.id) %>
+</div>
+
+<h2>いいねしたユーザー</h2>
+<% @tweet.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<% @tweet.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+<% end %>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.content %>
+    </div>
+      <br>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_with(model: [@tweet, @comment], local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div> 
+
+
+  <%= link_to "削除する",
+      tweet_path(@tweet),
+      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+
+ 
+
+<%= link_to "cafe一覧に戻る", tweets_path %>

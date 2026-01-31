@@ -1,0 +1,107 @@
+<h1>cafe</h1>
+<h3>cafe一覧</h3>
+
+<% if user_signed_in? %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+<% end %>
+
+<%= link_to "新規投稿へ", new_tweet_path %>
+
+
+
+
+<div class="tweets-container">
+
+
+  <% @tweets.each do |t| %>
+    <div class="tweet">
+     <%= link_to t.user.name, user_path(t.user.id) %>
+     <%= t.user.email %> 
+
+     <% if t.image.attached? %>
+          <%= image_tag t.image, size: '250x200'%>
+      <% end %>
+
+  
+
+      <%= t.shop %>
+      <%= t.place %>
+      <%= t.purpose %>
+      <%= t.atomosphere %>
+      <%= t.detail %>
+      <%= link_to "詳細へ", tweet_path(t.id) %>  
+
+      </div>
+
+  
+
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+         <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), data: { turbo_method: :delete } do %>
+             <i class="fas fa-heart style="color:red;"></i><%= t.likes.count %>
+          <% end %>
+        <% else %>
+         <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), data: { turbo_method: :post }  do %>
+             <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+     <% end %>
+      
+<% else %>
+   <i class="far fa-heart style=color:red;"></i><%= t.likes.count %>
+<% end %>
+    <% end %>
+</div>
+
+<h3>いいねランキング</h3>
+<% @rank_tweets.each do |t| %>
+    <% if t.likes.count == 0 %>
+    <% else %>
+ <div class="tweet">
+     <%= link_to t.user.name, user_path(t.user.id) %>
+     <%= t.user.email %> 
+
+     <% if t.image.attached? %>
+          <%= image_tag t.image, size: '250x200'%>
+      <% end %>
+
+  
+
+      <%= t.shop %>
+      <%= t.place %>
+      <%= t.purpose %>
+      <%= t.atomosphere %>
+      <%= t.detail %>
+
+      </div>
+
+  
+
+      <% if user_signed_in? %>
+        <% if current_user.already_liked?(t) %>
+         <%= link_to tweet_like_path(id: t.id, tweet_id: t.id), data: { turbo_method: :delete } do %>
+             <i class="fas fa-heart style=color:red;"></i><%= t.likes.count %>
+          <% end %>
+        <% else %>
+         <%= link_to tweet_likes_path(id: t.id, tweet_id: t.id), data: { turbo_method: :post }  do %>
+             <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+     <% end %>
+      
+<% else %>
+   <i class="far fa-heart"></i><%= t.likes.count %>
+<% end %>
+    <% end %>
+</div>
+<% end %>
+
+<%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+    <% Tag.all.each do |t| %>
+        <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
+    <% end %>
+    <%= submit_tag '検索' %>
+<% end %>
+
+<%= form_tag({controller:"tweets",action:"index"}, method: :get) do %>
+    <%= text_field_tag :tag %>
+    <%= submit_tag 'タグを追加' %>
+<% end %>

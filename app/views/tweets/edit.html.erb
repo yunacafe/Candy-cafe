@@ -1,0 +1,46 @@
+<h2>投稿を編集する</h2>
+
+<%= form_with model: @tweet, local: true do |f| %>
+
+  <p>
+    <%= f.label :shop, "店名" %><br>
+    <%= f.text_field :shop %>
+  </p>
+
+  <p>
+    <%= f.label :place, "場所" %><br>
+    <%= f.text_field :place %>
+  </p>
+
+  <p>
+    <%= f.label :purpose, "目的" %><br>
+    <%= f.text_field :purpose %>
+  </p>
+
+  <p>
+    <%= f.label :atomosphere, "雰囲気" %><br>
+    <%= f.text_field :atomosphere %>
+  </p>
+
+  <p>
+    <%= f.label :detail, "詳細" %><br>
+    <%= f.text_area :detail %>
+  </p>
+
+  <p>
+    <%= f.label :image, "画像" %><br>
+    <%= f.file_field :image %>
+  </p>
+
+  <h3>タグ</h3>
+  <% Tag.all.each do |tag| %>
+    <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
+    <%= tag.name %><br>
+  <% end %>
+
+  <%= f.submit "更新する" %>
+
+<% end %>
+
+<%= link_to "戻る", tweet_path(@tweet) %>
+
