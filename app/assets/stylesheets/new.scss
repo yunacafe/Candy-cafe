@@ -1,0 +1,113 @@
+.tweet-form-container {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 150px;  /* 下に余白を追加 */
+  box-sizing: border-box;
+}
+.field {
+  margin-bottom: 20px;
+}
+.field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.field input,
+.field textarea {
+  width: 70%;
+  padding: 8px;
+}
+.image-field input {
+  margin: 0 auto;
+}
+.tag-field {
+  width: 70%;
+  margin: 30px auto;
+  text-align: left;   
+}
+.form-check {
+  display: flex;        /* ← 横並び */
+  align-items: center;
+  margin: 5px 0;  
+}
+.form-check-input {
+  margin-right: 8px;
+}
+.submit-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #00acee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+.page-title {
+  font-size: 36px;      /* 文字サイズを大きく */
+  font-weight: bold;    /* 太字に */
+  color: #330000;       /* 好きな色に変更もOK */
+  text-align: center;   /* 中央揃え */
+  margin-bottom: 30px;  /* 下に余白 */
+}
+.btn-back {
+  display: inline-block;
+  background-color: #FF6699; /* 水色系 */
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;       /* 丸くして可愛く */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin-top: 15px;
+  
+}
+
+.btn-back:hover {
+  background-color: #e65c91; /* ホバーで少し濃く */
+  transform: scale(1.05);    /* 少し拡大 */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.btn-submit {
+  display: inline-block;
+  background-color: #3399FF; /* 水色系 */
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;       /* 丸くして可愛く */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin-top: 15px;
+  cursor: pointer;           /* ボタンっぽく */
+  border: none;              /* デフォルト枠線を消す */
+}
+
+.btn-submit:hover {
+  background-color: #287acc; /* ホバーで少し濃く */
+  transform: scale(1.05);    /* 少し拡大 */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.form-buttons {
+  text-align: center;      /* ボタン中央揃え */
+  margin-top: 30px;        /* 上に余白 */
+}
+
+.form-buttons .btn-submit,
+.form-buttons .btn-back {
+  display: inline-block;
+  margin: 0 10px;          /* 左右にボタン間の余白 */
+}
+.form-buttons .btn-submit,
+.form-buttons .btn-back {
+  display: inline-block;
+  margin: 0 10px;       /* 左右の余白 */
+  padding: 10px 20px;   /* 上下左右を統一 */
+  font-size: 14px;      
+  font-weight: bold;
+  border-radius: 20px;
+  text-align: center;
+  line-height: normal;   /* 高さを統一 */
+  vertical-align: middle; /* inputとaタグで高さを揃える */
+  cursor: pointer;
+}

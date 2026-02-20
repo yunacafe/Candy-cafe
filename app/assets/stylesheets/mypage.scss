@@ -1,0 +1,217 @@
+.mypage-container {
+  width: 100%;      /* コンテンツ幅を制限 */
+  margin: 10px auto;         /* 左右中央寄せ */
+  text-align: center;     /* 中のテキストやボタンを中央揃え */
+  padding: 20px;          /* 上下左右の余白 */
+  box-sizing: border-box;
+}
+
+.mypage-container h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #330000;
+  margin-bottom: 20px;
+}
+
+.mypage-container p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.mypage-container a.btn-back,
+.mypage-container a.btn-edit {
+  display: inline-block;
+  margin: 15px auto;      /* ボタン間の隙間 */
+}
+.mypage-container a.btn-edit {
+  background-color: #FF6699;
+  color: white;
+  padding: 10px 30px; /* ← 右左の幅を広げた */
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.mypage-buttons {
+  display: block;      /* ← 変更 */
+  text-align: center;  /* ボタン中央 */
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+.tweets-container {
+  width: 50%;
+  margin: 10px auto;
+}
+.show-image {
+  width: 100%;     /* 箱いっぱい */
+  height: auto;
+  border-radius: 10px;
+}
+.user-section-title {
+  color: #330000;     /* ← 変更したい色 */
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.tweet-form-view .field label {
+  color: #FF6699;
+  font-weight: bold;
+}
+/* ------------------------
+   マイページ 名前・プロフィール新デザイン
+------------------------ */
+.mypage-info {
+  background: linear-gradient(135deg, #ffe6f0, #fff0f5); /* パステルピンクグラデ */
+  border: 2px dashed #FF6699; /* 点線枠で可愛く */
+  border-radius: 20px;        /* 丸め */
+  padding: 25px 30px;
+  margin: 20px auto;
+  width: 65%;
+  box-shadow: 0 6px 15px rgba(255,102,153,0.2); /* 柔らかいピンク影 */
+  position: relative;
+  font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* hoverでちょっと浮かせる */
+.mypage-info:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255,102,153,0.3);
+}
+
+/* 名前 */
+.mypage-info .user-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #330000;
+  margin-bottom: 12px;
+}
+
+/* プロフィール */
+.mypage-info .user-profile {
+  font-size: 16px;
+  color: #330000;
+  line-height: 1.6;
+}
+
+/* ハートアイコン装飾 */
+.mypage-info .user-name::before,
+.mypage-info .user-profile::before {
+  content: "💖";  /* 小さなハート */
+  margin-right: 8px;
+  display: inline-block;
+  transform: scale(0.9);
+}
+/* 親コンテナを中央揃え */
+.mypage-edit-container {
+  display: flex;
+  flex-direction: column;  /* 縦並び */
+  align-items: center;     /* 横方向中央揃え */
+  max-width: 500px;        /* 横幅制限 */
+  margin: 30px auto;       /* 上下余白＋左右中央 */
+  padding: 20px;
+  text-align: center;      /* 見出しやボタンを中央揃え */
+}
+
+/* フォーム内フィールド幅を揃える */
+.mypage-edit-container .field input,
+.mypage-edit-container .field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ボタン中央揃え＆可愛く */
+.mypage-edit-container .actions,
+.mypage-edit-container .btn-cancel,
+.mypage-edit-container .btn-back {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.mypage-edit-container .btn-update,
+.mypage-edit-container .btn-cancel,
+.mypage-edit-container .btn-back {
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.mypage-edit-container .btn-update {
+  background: #ffb6c1;   /* ピンク */
+  color: white;
+}
+
+.mypage-edit-container .btn-update:hover {
+  background: #ff8fb1;
+  transform: scale(1.05);
+}
+
+.mypage-edit-container .btn-cancel {
+  background: #ffd1dc;   /* 薄ピンク */
+  color: #330000;
+}
+
+.mypage-edit-container .btn-cancel:hover {
+  background: #ffb3c6;
+  transform: scale(1.05);
+}
+
+.mypage-edit-container .btn-back {
+  background: #ffe4e1;
+  color: #330000;
+  text-decoration: none;
+}
+
+.mypage-edit-container .btn-back:hover {
+  background: #ffccd5;
+  transform: scale(1.05);
+}
+.account-buttons::before {
+  content: "Unhappy?";
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 30px;   /* 上の余白だけ広くする */
+  margin-bottom: 10px; /* ボタンとの間隔は少しだけ */
+  font-size: 18px;
+}
+.cute-button {
+  background-color: #81cfe0;  /* かわいい水色 */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+  margin-top: 15px;
+}
+
+.cute-button:hover {
+  background-color: #4aa3c0;   /* ホバーで濃いブルー */
+  transform: scale(1.05);
+}
+
+/* 戻るリンク */
+.back-link {
+  margin-left: 15px;
+  color: #4aa3c0;
+  text-decoration: none;
+  font-weight: bold;
+}
+.back-link:hover {
+  text-decoration: underline;
+}

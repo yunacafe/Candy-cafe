@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
       end
       @tweets.uniq!
     end
+    
      if params[:tag]
       Tag.create(name: params[:tag])
     end
@@ -62,7 +63,7 @@ end
 
    private
   def tweet_params
-    params.require(:tweet).permit(:shop, :place, :purpose, :atomosphere, :detail, :image, :tag_ids)
+    params.require(:tweet).permit(:shop, :place, :purpose, :atomosphere, :detail, :image, tag_ids: [])
   end
 
 end

@@ -1,46 +1,60 @@
-<h2>投稿を編集する</h2>
+<div class="edit-wrapper">
+<h2 class="edit-title">投稿を編集する</h2>
+
+<div class="tweet-form-container">
 
 <%= form_with model: @tweet, local: true do |f| %>
 
-  <p>
-    <%= f.label :shop, "店名" %><br>
+  <div class="field">
+    <%= f.label :shop, "店名" %>
     <%= f.text_field :shop %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :place, "場所" %><br>
+  <div class="field">
+    <%= f.label :place, "場所" %>
     <%= f.text_field :place %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :purpose, "目的" %><br>
+  <div class="field">
+    <%= f.label :purpose, "目的" %>
     <%= f.text_field :purpose %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :atomosphere, "雰囲気" %><br>
+  <div class="field">
+    <%= f.label :atomosphere, "雰囲気" %>
     <%= f.text_field :atomosphere %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :detail, "詳細" %><br>
+  <div class="field">
+    <%= f.label :detail, "詳細" %>
     <%= f.text_area :detail %>
-  </p>
+  </div>
 
-  <p>
-    <%= f.label :image, "画像" %><br>
+  <div class="field">
+    <%= f.label :image, "画像" %>
     <%= f.file_field :image %>
-  </p>
+  </div>
 
-  <h3>タグ</h3>
-  <% Tag.all.each do |tag| %>
-    <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
-    <%= tag.name %><br>
-  <% end %>
+  <!-- タグ -->
+  <div class="form-group">
+    <h3>タグ</h3>
 
-  <%= f.submit "更新する" %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div class="form-check">
+        <%= tag.label class: 'form-check-label' do %>
+          <%= tag.check_box class: 'form-check-input' %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-buttons">
+    <%= f.submit "更新する", class: "btn-submit" %>
+  </div>
 
 <% end %>
 
-<%= link_to "戻る", tweet_path(@tweet) %>
+<%= link_to "投稿詳細に戻る", tweet_path(@tweet), class: "btn-back" %>
 
+</div>

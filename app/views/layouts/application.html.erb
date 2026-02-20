@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Yunacafe" %></title>
+    <title><%= content_for(:title) || "Candy-cafe" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -15,20 +15,37 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media: 'all',"data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %> <%= action_name %>">
  <header>
-  <h1>Yunacafe</h1>
+  <h1 class="logo">Candy-cafe</h1>
   <div class="header-list">
    <ul>
     <% if user_signed_in? %>
-     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <li>
+  <%= button_to "ログアウト",
+      destroy_user_session_path,
+      method: :delete,
+      class: "btn-auth" %>
+</li>
+
+
     <% else %>
-     <li><%= link_to "新規登録", new_user_registration_path %></li>
-     <li><%= link_to "ログイン", new_user_session_path %></li>
+     <li>
+  <%= link_to "新規登録",
+      new_user_registration_path,
+      class: "btn-auth" %>
+</li>
+
+<li>
+  <%= link_to "ログイン",
+      new_user_session_path,
+      class: "btn-auth" %>
+</li>
+
     <% end %>
    </ul>
   </div>
@@ -36,6 +53,9 @@
  <main>
   <%= yield %>
  </main>
+    <footer>
+      <p>Copyright © GeekSalon All Rights Reserved.</p>
+    </footer>
 </body>
 
 </html>
